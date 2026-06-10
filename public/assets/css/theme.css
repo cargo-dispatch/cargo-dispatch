@@ -1,0 +1,1670 @@
+@font-face {
+    font-family: 'Jost';
+    src: url('../../Jost-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Jost';
+    src: url('../../Jost-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+:root {
+  /* Light Theme Variables */
+   --search-icon-color: #FFD700; /* Yellow for light theme */
+  --search-bg: #F3F3F3; /* Light background for search */
+  --search-text: #000000; /* Dark text for search */
+  --search-placeholder: #888888; /* Placeholder color */
+  --sidebar-bg: #EFEFEF;
+  --main-wrapper-bg: #FFFFFF;
+  --content-wrapper-bg: #EFEFEF;
+  --text-color: #000000;
+  --sidebar-text: #000000;
+  --hover-color: #F8C71F;
+  --sidebar-border-radius: 21px 21px 0 0;
+  --chart-text: #000000;
+  --chart-grid: rgba(0, 0, 0, 0.1);
+   --btn-bg: #ffffff;
+    --btn-text: #000000;
+    --btn-border: #000000;
+    --btn-hover-bg: #000000;
+    --btn-hover-text: #F8C71F;
+    --btn-hover-border: #F8C71F;
+     --breadcrum-text: #444444;       /* Dark gray, visible on light background */
+  --breadcrumb-active: #000000;
+   --striped-bg: #f8f9fa;
+   
+
+}
+
+[data-theme="dark"] {
+  /* Dark Theme Variables */
+ --search-icon-color: #F8C71F; /* Golden yellow for dark theme */
+  --search-bg: #2B2F3B; /* Dark background for search */
+  --search-text: #FFFFFF; /* White text for search */
+  --search-placeholder: #AAAAAA; /* Light placeholder */
+  --sidebar-bg: #2B2F3B99;
+  --main-wrapper-bg: #1C202F;
+  --content-wrapper-bg: #1C202F;
+  --text-color: #FFFFFF;
+  --sidebar-text: #FFFFFF;
+  --hover-color: #F8C71F;
+  --sidebar-border-radius: 21px 21px 0 0;
+  --chart-text: #FFFFFF;
+  --chart-grid: rgba(255, 255, 255, 0.1);
+    --btn-bg: #1C202F;
+    --btn-text: #ffffff;
+    --btn-border: #ffffff;
+    --btn-hover-bg:  #F8C71F;
+    --btn-hover-text:  #ffffff;
+    --btn-hover-border: #F8C71F;
+    --breadcrum-text: #ffffff;
+    --breadcrumb-active: #F8C71F;
+      --striped-bg: #2b2f3b99;
+
+}
+/* ================================
+   TABLE THEME STYLING
+================================ */
+
+
+.show-enteries{
+    color: var(--text-color);
+}
+
+.custom-table input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+    accent-color: #F8C71F;
+    background: white;
+}
+.form-check-input:checked {
+    accent-color: red;
+}
+.custom-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--main-wrapper-bg);
+    color: var(--text-color);
+    border-radius: 12px;
+    overflow-x: auto !important;
+    font-family: 'Jost', sans-serif;
+}
+
+
+/* Header & Footer */
+.custom-table thead th,
+.custom-table tfoot th {
+    background: var(--sidebar-bg);
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 12px 14px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--chart-grid);
+}
+
+/* Table Body */
+.custom-table tbody td {
+    padding: 12px 14px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--chart-grid);
+    color: var(--text-color);
+    font-size: 14px;
+}
+.custom-table tbody td.text-center { text-align: center; }
+.custom-table tbody td.pg-empty-cell {
+    text-align: center !important;
+    padding: 40px 18px !important;
+    color: var(--search-placeholder);
+    font-size: 13px;
+    font-family: 'Jost', sans-serif;
+    opacity: .7;
+}
+/* ================================
+   STRIPED ROWS (THEME FRIENDLY)
+================================ */
+
+/* Light & Dark theme automatic striping */
+.custom-table tbody tr:nth-child(even) {
+    background-color: var(--striped-bg) !important;
+}
+
+.custom-table tbody tr:nth-child(odd) {
+    background: var(--main-wrapper-bg);
+}
+
+/* Hover overrides striping */
+.custom-table tbody tr:hover {
+    background: var(--hover-color) !important;
+    color: #000 !important;
+}
+.custom-table tbody tr:hover .lb-phone {
+    color: #000 !important;
+}
+
+/* Hover Row */
+.custom-table tbody tr:hover {
+    background: var(--hover-color);
+    color: #000;
+    cursor: pointer;
+}
+
+/* Checkbox alignment */
+.custom-table input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* No hover on loader row */
+#loaderBody tr:hover {
+    background: none !important;
+}
+
+/* Loader style */
+.custom-loader .loader-logo {
+    width: 40px;
+    margin-bottom: 10px;
+}
+
+.breadcrumb a {
+    color: var(--breadcrum-text);
+}
+.breadcrumb .active {
+    color: var(--breadcrumb-active);
+    font-weight: 600;
+}
+
+.theme-btn {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: 1px solid var(--btn-border);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-family: 'Jost';
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.breadcrumb-text.active {
+    color: var(--breadcrumb-active) !important;
+}
+.breadcrumb-text{
+    color: var(--breadcrum-text) ;
+}
+
+.theme-btn:hover {
+    background: var(--btn-hover-bg);
+    color: var(--btn-hover-text);
+    border-color: var(--btn-hover-border);
+}
+.assign-btn {
+    background: var(--btn-bg) !important;
+    color: var(--btn-text) !important;
+}
+.assign-btn:hover {
+    background: black !important;
+}
+
+/* ---------------------------------------
+   GLOBAL
+---------------------------------------- */
+
+.bg-gradient-primary {
+    border-radius: var(--sidebar-border-radius);
+    background-size: cover;
+}
+
+/* Sidebar Wrapper Layout */
+.sidebar-wrapper {
+   
+    justify-content: space-between;
+    background: var(--sidebar-bg) !important;
+    color:var( --text-color) !important;
+    transition: background-color 0.3s ease-in-out; /* Safe transition */
+}
+
+
+
+/* Apply theme colors */
+.theme-grey {
+    background: var(--sidebar-bg) !important;
+    transition: background-color 0.3s ease-in-out; /* Safe transition */
+}
+
+.wrapper-color {
+    background: var(--main-wrapper-bg) !important;
+    transition: background-color 0.4s ease-in-out; /* Safe transition */
+}
+
+#wrapper {
+    background: var(--main-wrapper-bg) !important;
+    transition: background-color 0.4s ease-in-out; /* Safe transition */
+}
+
+#content-wrapper {
+    background: var(--content-wrapper-bg) !important;
+    transition: background-color 0.4s ease-in-out; /* Safe transition */
+}
+
+/* ---------------------------------------
+   SIDEBAR TEXT & LINKS
+---------------------------------------- */
+
+#accordionSidebar .nav-link,
+#accordionSidebar .collapse-item,
+#accordionSidebar .sidebar-heading,
+#accordionSidebar .collapse-header {
+    color: var(--sidebar-text) !important;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out; 
+}
+
+/* Hover Effects for Sidebar */
+#accordionSidebar .nav-link:hover,
+#accordionSidebar .nav-link.active,
+#accordionSidebar .collapse-item:hover,
+#accordionSidebar .collapse-item.active {
+    color: var(--hover-color) !important;
+    background-color: #01030e !important;
+    border-radius: 5px;
+}
+#accordionSidebar .nav-link:hover i,
+#accordionSidebar .nav-link.active i,
+#accordionSidebar .collapse-item:hover i,
+#accordionSidebar .collapse-item.active i {
+    color: inherit !important;
+}
+
+/* Active State */
+#accordionSidebar .nav-item.active > .nav-link {
+    margin-top: 5px !important;
+    color: var(--hover-color) !important;
+     background-color: #272A39 !important;
+}
+.sidebar-link.active {
+    color: var(--hover-color) !important;       /* theme golden */
+    background-color: #272A39 !important;       /* dark background */
+    font-weight: 600;
+}
+
+/* For links inside collapse menus */
+.collapse-inner .sidebar-link.active {
+    color: var(--text-color) !important;
+    background-color: #272A39 !important;
+    font-weight: 600;
+}
+
+/* Sidebar Icons */
+#accordionSidebar .nav-link i,
+#accordionSidebar .collapse-item i {
+    color: var(--sidebar-text);
+    transition: color 0.3s ease-in-out; /* Safe transition */
+}
+
+/* Icon Hover Sync */
+#accordionSidebar .nav-link:hover i,
+#accordionSidebar .collapse-item:hover i {
+    color: var(--hover-color);
+}
+
+/* Cursor Pointer */
+#accordionSidebar .nav-link,
+#accordionSidebar .collapse-item {
+    cursor: pointer !important;
+}
+/* Theme toggle icons visibility */
+.toggle-theme-icon[data-theme="dark"] {
+    display: none;
+}
+
+[data-theme="dark"] .toggle-theme-icon[data-theme="dark"] {
+    display: block;
+}
+
+[data-theme="dark"] .toggle-theme-icon[data-theme="light"] {
+    display: none;
+}
+
+.toggle-theme-icon[data-theme="light"] {
+    display: block;
+}
+
+/* Main content area styling */
+.main-content {
+    background: var(--main-wrapper-bg);
+    color: var(--text-color);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Safe transitions */
+}
+
+/* Update body and general text colors */
+body {
+    background: var(--main-wrapper-bg);
+    color: var(--text-color);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Safe transitions */
+}
+
+/* Ensure all content uses theme colors */
+.card {
+    background: var(--main-wrapper-bg);
+    color: var(--text-color);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Safe transitions */
+}
+
+.table {
+    background: var(--main-wrapper-bg);
+    color: var(--text-color);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Safe transitions */
+}
+
+.form-control {
+    background: var(--main-wrapper-bg);
+    color: var(--text-color);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Safe transitions */
+}
+
+/* Additional styling for better contrast */
+[data-theme="light"] {
+  --sidebar-text: #000000;
+  --text-color: #000000;
+}
+
+[data-theme="dark"] {
+  --sidebar-text: #FFFFFF;
+  --text-color: #FFFFFF;
+}
+
+/* CRITICAL: Preserve Bootstrap collapse animations while allowing theme transitions */
+.collapse {
+    transition: height 0.35s ease !important; /* Bootstrap default */
+}
+
+.collapsing {
+    transition: height 0.35s ease !important; /* Bootstrap default */
+}
+
+/* Safe transitions that don't interfere with collapse */
+#accordionSidebar {
+    transition: background-color 0.3s ease-in-out; /* Only color transitions */
+}
+
+#accordionSidebar .nav-link,
+#accordionSidebar .collapse-item {
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out !important; /* Only color transitions */
+}
+
+/* Remove any layout/position transitions that might conflict */
+#accordionSidebar .collapse,
+#accordionSidebar .collapsing,
+#accordionSidebar .collapse-inner,
+#accordionSidebar .collapse.show {
+    transition: height 0.35s ease !important; /* Only allow height transitions for collapse */
+}
+
+/* Ensure collapse items don't have conflicting transitions */
+.collapse-item {
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out !important; /* Only safe properties */
+}
+
+.badge-layout {
+    border-radius: 12px !important;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgb(43,47,59);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: unset !important;                                         
+}
+.badge-layout {
+    border-radius: 12px !important;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgb(43,47,59);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: unset !important;                                         
+}
+
+.badge-layout:hover {
+    background: linear-gradient(174deg, #f8c71fba 0%, #ffd70000 100%) !important;
+    border-color: #F8C71F !important;
+}
+
+/* Table borders for both themes */
+.custom-table {
+    border-collapse: collapse;
+}
+
+/* Light Mode â€“ Dark borders */
+[data-theme="light"] .custom-table,
+[data-theme="light"] .custom-table th,
+[data-theme="light"] .custom-table td {
+    border: 1px solid #000000 !important;
+}
+
+/* Dark Mode â€“ Light borders */
+[data-theme="dark"] .custom-table,
+[data-theme="dark"] .custom-table th,
+[data-theme="dark"] .custom-table td {
+    border: 1px solid rgba(255,255,255,0.2) !important;
+}
+
+.theme-dashboard {
+    font-family: Jost;
+    font-weight: 600;
+    font-size: 52px;
+    line-height: 100%;
+}
+
+.placeholder-icon {
+    font-weight: 900; /* required for solid icon */
+}
+
+.placeholder-icon::placeholder {
+    font-family: "Font Awesome 5 Free", Arial, sans-serif;
+    font-weight: 900;
+    color: #888;
+}
+.custom-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 25px;
+}
+
+.nav-left h2 {
+    font-size: 38px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.nav-center {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+}
+
+.search-bar {
+    position: relative;
+    width: 60%;
+    max-width: 550px;
+}
+.border-radius-sidebar {
+    border-radius:21px;
+}
+.search-input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border-radius: 12px;
+    border: none;
+    background: #F3F3F3;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #7d7d7d;
+    font-size: 16px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-icon {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.nav-profile {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+
+.placeholder-icon {
+    font-family: "Font Awesome 5 Free", Arial, sans-serif;
+    font-weight: 900; /* required for solid icon */
+}
+
+.placeholder-icon::placeholder {
+    font-family: "Font Awesome 5 Free", Arial, sans-serif;
+    font-weight: 900;
+    color: #888;
+}
+.dashboard-font{
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    white-space: nowrap;
+    color: var(--text-color);
+}
+
+.dashboard-right {
+    display: flex;
+    justify-content: end;
+    flex-direction: unset !important;
+    align-items: center;
+}
+@media (max-width: 1200px) {
+    .horizontal-cards-container {
+        justify-content: center !important;
+    }
+    .state-card,
+    .customer-card {
+        min-width: 100%;
+    }
+}
+@media (max-width: 991px) {
+    .navbar .row {
+        width: auto !important;
+    }
+    
+    .dashboard-font {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 767px) {
+    .custom-table tbody td {
+        font-size: 9px;
+    }
+    .navbar {
+        padding: 0.5rem 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .dashboard-font {
+        font-size: 18px;
+        padding-left: 0;
+    }
+    
+    .navbar-nav {
+        width: auto !important;
+    }
+    
+    .search-input-dashboard {
+        width: 150px;
+        font-size: 0.875rem;
+    }
+    
+    .nav-link {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .img-profile {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 575px) {
+    .navbar {
+        padding: 0.5rem 0.5rem;
+    }
+    .custom-nav-responsive {
+        height: 2.375rem !important;
+    }
+    
+    .dashboard-font {
+        font-size: 0.85rem;
+    }
+    
+    .nav-link {
+        padding: 0.5rem 0.5rem;
+    }
+    
+    .mx-1 {
+        margin-left: 0.25rem !important;
+        margin-right: 0.25rem !important;
+    }
+    
+    .badge-counter {
+        font-size: 7px !important;
+    }
+    
+    .img-profile {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* Ensure dropdown menus are properly sized on mobile */
+.dropdown-menu {
+    min-width: 200px;
+}
+.sidebar .nav-item .nav-link{
+    font-weight: 600 !important;
+}
+
+.theme-mode {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    height: 100% !important;
+}
+
+.tick-btn-hover:hover {
+ color: rgb(0, 0, 0) !important;
+ border: 2px solid #000;   
+}
+.assign-overview-btn {
+    background: #F8C71F !important;  /* golden */
+    color: #000 !important;
+    border: 1px solid #F8C71F !important;
+    border-radius: 12px;
+}
+
+.assign-overview-btn:hover {
+    background: #000 !important;  /* black */
+    color: #ffffff !important;    /* white text */
+    border: 1px solid #ffffff !important; /* white border */
+}
+
+.invoice-status-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    width: 80px;
+    display: block;
+}
+
+
+  @keyframes pushBackward {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(6px); }
+    100% { transform: translateX(0); }
+  }
+
+  /* Apply animation on hover */
+  #sidebarToggle:hover {
+    animation: pushBackward 0.8s ease-in-out;
+  }
+
+
+.bg-gold {
+background-color: gold !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.theme-modal {
+    background: var(--main-wrapper-bg);
+    border: 1px solid var(--chart-grid);
+    transition: all 0.3s ease-in-out;
+}
+
+.theme-modal-header {
+    background: var(--sidebar-bg) !important;
+    color: var(--text-color) !important;
+    border-bottom: 1px solid var(--chart-grid);
+    transition: all 0.3s ease-in-out;
+}
+
+.theme-modal-title {
+    color: var(--text-color) !important;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+}
+
+.theme-btn-close {
+    filter: invert(var(--btn-close-filter, 0));
+    opacity: 0.8;
+    transition: all 0.3s ease-in-out;
+}
+
+[data-theme="light"] {
+    --btn-close-filter: 0;
+}
+
+[data-theme="dark"] {
+    --btn-close-filter: 1;
+}
+
+.theme-btn-close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.theme-modal-body {
+    background: var(--main-wrapper-bg) !important;
+    color: var(--text-color) !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.theme-modal-hr {
+    border-color: var(--chart-grid) !important;
+    opacity: 0.6;
+}
+
+.theme-modal-section-title {
+    color: var(--text-color) !important;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+}
+
+.theme-collapse-arrow {
+    color: var(--text-color) !important;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.theme-collapse-arrow:hover {
+    color: var(--hover-color) !important;
+    transform: translateY(-1px);
+}
+
+/* Table Styles for Modal */
+.theme-table {
+    background: var(--main-wrapper-bg);
+    color: var(--text-color);
+    border: 1px solid var(--chart-grid);
+    transition: all 0.3s ease-in-out;
+}
+
+.theme-table-header {
+    background: var(--sidebar-bg) !important;
+    border-bottom: 2px solid var(--chart-grid);
+}
+
+.theme-table-th {
+    color: var(--text-color) !important;
+    font-weight: 600;
+    font-family: 'Jost', sans-serif;
+    border-color: var(--chart-grid) !important;
+}
+
+.theme-table-body {
+    background: var(--main-wrapper-bg);
+}
+
+.theme-table-body tr {
+    border-color: var(--chart-grid) !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.theme-table-body tr:nth-child(even) {
+    background-color: var(--striped-bg) !important;
+}
+
+.theme-table-body tr:hover {
+    background: var(--hover-color) !important;
+    color: #000 !important;
+}
+
+.theme-table-body td {
+    border-color: var(--chart-grid) !important;
+    color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.theme-table-body tr:hover td {
+    color: #000 !important;
+}
+
+/* Modal Footer */
+.theme-modal-footer {
+    background: var(--sidebar-bg) !important;
+    border-top: 1px solid var(--chart-grid);
+    transition: all 0.3s ease-in-out;
+}
+
+.theme-btn-outline {
+    background: var(--btn-bg) !important;
+    color: var(--btn-text) !important;
+    border: 1px solid var(--btn-border) !important;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+.theme-btn-outline:hover {
+    background: var(--btn-hover-bg) !important;
+    color: var(--btn-hover-text) !important;
+    border-color: var(--btn-hover-border) !important;
+    transform: translateY(-1px);
+}
+
+/* Bootstrap Icons Color Fix */
+.theme-modal-header .bi,
+.theme-modal-section-title .bi {
+    color: var(--hover-color);
+}
+
+/* Modal Backdrop Theme */
+.modal-backdrop {
+    background-color: var(--backdrop-color, #000);
+    opacity: var(--backdrop-opacity, 0.5) !important;
+}
+
+[data-theme="light"] {
+    --backdrop-color: #000;
+    --backdrop-opacity: 0.5;
+}
+
+[data-theme="dark"] {
+    --backdrop-color: #000;
+    --backdrop-opacity: 0.7;
+}
+
+/* Ensure modal content is properly themed */
+.modal-content * {
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .theme-modal {
+        margin: 1rem;
+    }
+    
+    .theme-modal-header,
+    .theme-modal-footer {
+        padding: 1rem !important;
+    }
+    
+    .theme-modal-body {
+        padding: 1rem !important;
+    }
+}
+
+/* Add these to your existing theme.css */
+
+/* ================================
+   MODAL TABLE THEME FIXES
+================================ */
+
+/* Ensure table headers pick up theme colors */
+.theme-table-header {
+    background: var(--sidebar-bg) !important;
+    border-bottom: 2px solid var(--chart-grid) !important;
+}
+
+.theme-table-th {
+    color: var(--text-color) !important;
+    font-weight: 600;
+    font-family: 'Jost', sans-serif;
+    border-color: var(--chart-grid) !important;
+    background: var(--sidebar-bg) !important;
+}
+
+/* Fix table body and cells */
+.theme-table-body {
+    background: var(--main-wrapper-bg) !important;
+}
+
+.theme-table-body tr {
+    border-color: var(--chart-grid) !important;
+    transition: all 0.2s ease-in-out;
+    background: var(--main-wrapper-bg) !important;
+}
+
+/* Striped rows with theme colors */
+.theme-table-body tr:nth-child(even) {
+    background-color: var(--striped-bg) !important;
+}
+
+.theme-table-body tr:nth-child(odd) {
+    background: var(--main-wrapper-bg) !important;
+}
+
+/* Fix table cell colors */
+.theme-table-body td {
+    border-color: var(--chart-grid) !important;
+    color: var(--text-color) !important;
+    background: inherit !important;
+    transition: all 0.3s ease-in-out;
+}
+
+/* CRITICAL FIX: Hover state for both themes */
+.theme-table-body tr:hover {
+    background: var(--hover-color) !important;
+}
+
+/* Force black text on hover for both themes */
+.theme-table-body tr:hover td {
+    color: #000000 !important;
+    font-weight: 500;
+}
+
+/* Specific fix for dark mode table borders */
+[data-theme="dark"] .theme-table,
+[data-theme="dark"] .theme-table th,
+[data-theme="dark"] .theme-table td {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+[data-theme="light"] .theme-table,
+[data-theme="light"] .theme-table th,
+[data-theme="light"] .theme-table td {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ensure table doesn't have any inherited colors that override our theme */
+.theme-table {
+    background: var(--main-wrapper-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--chart-grid) !important;
+}
+
+/* Fix for Bootstrap table striped variant if used */
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    color: var(--text-color) !important;
+    background-color: var(--main-wrapper-bg) !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(even) > * {
+    color: var(--text-color) !important;
+    background-color: var(--striped-bg) !important;
+}
+
+/* Ensure hover works for both striped and non-striped tables */
+.table-striped > tbody > tr:hover > * {
+    color: #000000 !important;
+    background: var(--hover-color) !important;
+}
+
+
+
+/* ================================
+   FULLCALENDAR THEME INTEGRATION
+================================ */
+
+/* Calendar Container */
+#calendar {
+    background: var(--main-wrapper-bg);
+    color: var(--text-color);
+    border-radius: 12px;
+    padding: 20px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* ================================
+   CALENDAR HEADER & TOOLBAR
+================================ */
+
+.fc .fc-toolbar {
+    background: var(--sidebar-bg);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.fc .fc-toolbar-title {
+    color: var(--text-color) !important;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Toolbar Buttons */
+.fc .fc-button {
+    background: var(--btn-bg) !important;
+    color: var(--btn-text) !important;
+    border: 1px solid var(--btn-border) !important;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    text-transform: capitalize;
+}
+
+.fc .fc-button:hover {
+    background: var(--btn-hover-bg) !important;
+    color: var(--btn-hover-text) !important;
+    border-color: var(--btn-hover-border) !important;
+    transform: translateY(-1px);
+}
+
+.fc .fc-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.fc .fc-button-primary:not(:disabled):active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+    background: var(--hover-color) !important;
+    color: #000000 !important;
+    border-color: var(--hover-color) !important;
+}
+
+/* ================================
+   CALENDAR GRID & STRUCTURE
+================================ */
+
+/* Calendar Table */
+.fc .fc-scrollgrid {
+    border-color: var(--chart-grid) !important;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.fc .fc-scrollgrid-section > * {
+    border-color: var(--chart-grid) !important;
+}
+
+/* Day Headers */
+.fc .fc-col-header-cell {
+    background: var(--sidebar-bg) !important;
+    color: var(--text-color) !important;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    padding: 12px 8px;
+    border-color: var(--chart-grid) !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.fc .fc-col-header-cell-cushion {
+    color: var(--text-color) !important;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease-in-out;
+}
+
+/* ================================
+   DAY CELLS
+================================ */
+
+.fc .fc-daygrid-day {
+    background: var(--main-wrapper-bg);
+    border-color: var(--chart-grid) !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.fc .fc-daygrid-day:hover {
+    background: var(--striped-bg) !important;
+}
+
+.fc .fc-daygrid-day-number {
+    color: var(--text-color) !important;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    padding: 8px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Today's Date Highlight */
+.fc .fc-day-today {
+    background: var(--striped-bg) !important;
+}
+
+.fc .fc-day-today .fc-daygrid-day-number {
+    background: var(--hover-color);
+    color: #000000 !important;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px;
+    font-weight: 600;
+}
+
+/* Other Month Days */
+.fc .fc-day-other .fc-daygrid-day-number {
+    color: var(--search-placeholder) !important;
+    opacity: 0.5;
+}
+
+/* ================================
+   EVENTS STYLING
+================================ */
+
+.fc-event {
+    border: none !important;
+    border-radius: 6px;
+    padding: 4px 8px;
+    margin: 2px 0;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.fc-event:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Event Title */
+.fc-event-title {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Status-based Event Colors */
+.fc-event.status-pending {
+    background: #FFC107 !important;
+    color: #000000 !important;
+}
+
+.fc-event.status-active {
+    background: #17A2B8 !important;
+    color: #FFFFFF !important;
+}
+
+.fc-event.status-complete {
+    background: #28A745 !important;
+    color: #FFFFFF !important;
+}
+
+.fc-event.status-cancelled {
+    background: #DC3545 !important;
+    color: #FFFFFF !important;
+}
+
+/* Event Type Colors (if needed) */
+.fc-event.event-pickup {
+    border-left: 4px solid #F8C71F !important;
+}
+
+.fc-event.event-delivery {
+    border-left: 4px solid #28A745 !important;
+}
+
+/* ================================
+   TIME GRID (Week/Day View)
+================================ */
+
+.fc .fc-timegrid-slot {
+    background: var(--main-wrapper-bg);
+    border-color: var(--chart-grid) !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.fc .fc-timegrid-slot-label {
+    color: var(--text-color) !important;
+    font-family: 'Jost', sans-serif;
+    border-color: var(--chart-grid) !important;
+}
+
+.fc .fc-timegrid-axis {
+    background: var(--sidebar-bg);
+}
+
+/* Current Time Indicator */
+.fc .fc-timegrid-now-indicator-line {
+    border-color: var(--hover-color) !important;
+    border-width: 2px;
+}
+
+.fc .fc-timegrid-now-indicator-arrow {
+    border-color: var(--hover-color) !important;
+}
+
+/* ================================
+   MORE LINK ("+X more")
+================================ */
+
+.fc .fc-daygrid-more-link {
+    background: var(--hover-color) !important;
+    color: #000000 !important;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.fc .fc-daygrid-more-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px rgba(248, 199, 31, 0.4);
+}
+
+/* ================================
+   POPOVER (Event Details)
+================================ */
+
+.fc .fc-popover {
+    background: var(--main-wrapper-bg) !important;
+    border: 1px solid var(--chart-grid) !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+.fc .fc-popover-header {
+    background: var(--sidebar-bg) !important;
+    color: var(--text-color) !important;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--chart-grid) !important;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+}
+
+.fc .fc-popover-body {
+    background: var(--main-wrapper-bg) !important;
+    color: var(--text-color) !important;
+    padding: 10px;
+}
+
+.fc .fc-popover-close {
+    color: var(--text-color) !important;
+    opacity: 0.7;
+    transition: all 0.2s ease-in-out;
+}
+
+.fc .fc-popover-close:hover {
+    opacity: 1;
+    color: var(--hover-color) !important;
+}
+
+/* ================================
+   LIST VIEW
+================================ */
+
+.fc .fc-list {
+    border-color: var(--chart-grid) !important;
+}
+
+.fc .fc-list-event:hover td {
+    background: var(--hover-color) !important;
+    color: #000000 !important;
+}
+
+.fc .fc-list-event-time,
+.fc .fc-list-event-title {
+    color: var(--text-color) !important;
+    font-family: 'Jost', sans-serif;
+}
+
+.fc .fc-list-day-cushion {
+    background: var(--sidebar-bg) !important;
+    color: var(--text-color) !important;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+}
+
+/* ================================
+   SCROLLBAR STYLING
+================================ */
+
+.fc-scroller::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.fc-scroller::-webkit-scrollbar-track {
+    background: var(--main-wrapper-bg);
+    border-radius: 4px;
+}
+
+.fc-scroller::-webkit-scrollbar-thumb {
+    background: var(--chart-grid);
+    border-radius: 4px;
+    transition: background 0.3s ease-in-out;
+}
+
+.fc-scroller::-webkit-scrollbar-thumb:hover {
+    background: var(--hover-color);
+}
+
+/* ================================
+   FILTERS & CONTROLS
+================================ */
+
+.calendar-filters {
+    background: var(--sidebar-bg);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.calendar-filters label {
+    color: var(--text-color);
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.calendar-filters select,
+.calendar-filters input {
+    background: var(--main-wrapper-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--chart-grid) !important;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'Jost', sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+.calendar-filters select:focus,
+.calendar-filters input:focus {
+    border-color: var(--hover-color) !important;
+    box-shadow: 0 0 0 0.2rem rgba(248, 199, 31, 0.25);
+    outline: none;
+}
+
+/* ================================
+   STATISTICS CARDS
+================================ */
+
+.shipment-stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 150px;
+    background: var(--sidebar-bg);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--chart-grid);
+    transition: all 0.3s ease-in-out;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--hover-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h6 {
+    color: var(--text-color);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.stat-card .stat-number {
+    color: var(--hover-color);
+    font-family: 'Jost', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.sidebar .nav-item .collapse .collapse-inner .collapse-item,
+.sidebar-link.active {
+    margin-bottom: 5px;
+}
+/* ================================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 768px) {
+
+.mbl-btn {
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    font-size: 9px !important;
+}
+
+.calendar-filters{
+    padding: 8px;
+}
+.fs-11{
+    font-size: 11px !important;
+}
+    #calendar {
+        padding: 0px;
+    } 
+    
+    .fc .fc-toolbar {
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    .fc .fc-toolbar-title {
+        font-size: 1.2rem;
+    }
+    
+    .fc .fc-button {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+    }
+    
+    .fc .fc-col-header-cell-cushion {
+        font-size: 0.75rem;
+    }
+    
+    .fc-event {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+    }
+    
+    .stat-card {
+        min-width: 100%;
+    }
+}
+
+/* ================================
+   DARK MODE SPECIFIC OVERRIDES
+================================ */
+
+[data-theme="dark"] .fc {
+    --fc-border-color: rgba(255, 255, 255, 0.1);
+    --fc-neutral-bg-color: #2B2F3B;
+}
+
+[data-theme="dark"] .fc-event {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ================================
+   LIGHT MODE SPECIFIC OVERRIDES
+================================ */
+
+[data-theme="light"] .fc {
+    --fc-border-color: rgba(0, 0, 0, 0.1);
+    --fc-neutral-bg-color: #F3F3F3;
+}
+
+[data-theme="light"] .fc-event {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================
+   LOADING STATE
+================================ */
+
+.fc-loading {
+    position: relative;
+}
+
+.fc-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--chart-grid);
+    border-top-color: var(--hover-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ================================
+   ACCESSIBILITY
+================================ */
+
+.fc-event:focus {
+    outline: 2px solid var(--hover-color);
+    outline-offset: 2px;
+}
+
+.fc .fc-button:focus {
+    box-shadow: 0 0 0 0.2rem rgba(248, 199, 31, 0.25);
+    outline: none;
+}
+
+/* ================================
+   PRINT STYLES
+================================ */
+
+@media print {
+    #calendar {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .fc .fc-toolbar {
+        display: none;
+    }
+    
+    .calendar-filters {
+        display: none;
+    }
+    
+    .fc-event {
+        break-inside: avoid;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .container-sm-custom {
+        padding-left: 0 !important;
+        padding-right: 0.5rem !important;
+    }
+}
+
+ .theme-dropdown {
+        background-color: var(--main-wrapper-bg) !important;
+        border: 1px solid var(--btn-border) !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .theme-dropdown-header {
+        background-color: var(--main-wrapper-bg) !important;
+        color: var(--text-color) !important;
+        border-bottom: 1px solid var(--btn-border) !important;
+        font-weight: 600 !important;
+    }
+
+    .theme-dropdown-item {
+        background-color: var(--main-wrapper-bg) !important;
+        color: var(--text-color) !important;
+        border-bottom: 1px solid var(--btn-border) !important;
+        transition: all 0.2s ease !important;
+    }
+
+    .theme-dropdown-item:hover {
+        background-color: var(--hover-color) !important;
+        color: var(--btn-text) !important;
+    }
+
+    .theme-dropdown-item:last-child {
+        border-bottom: none !important;
+    }
+
+    .theme-dropdown-divider {
+        border-top: 1px solid var(--btn-border) !important;
+    }
+
+    .theme-dropdown-footer {
+        background-color: var(--main-wrapper-bg) !important;
+        color: var(--text-color) !important;
+    }
+
+    .theme-dropdown-footer:hover {
+        color: var(--hover-color) !important;
+        background-color: var(--main-wrapper-bg) !important;
+    }
+
+    .theme-notification-badge {
+        background-color: #dc3545 !important;
+        color: white !important;
+    }
+
+    .theme-icon-circle {
+        background-color: var(--hover-color) !important;
+    }
+
+    .theme-icon-circle i {
+        color: var(--btn-text) !important;
+    }
+
+    .theme-message-counter {
+        background-color: #dc3545 !important;
+        color: white !important;
+    }
+
+    .theme-message-item {
+        background-color: var(--main-wrapper-bg) !important;
+        color: var(--text-color) !important;
+        border-bottom: 1px solid var(--btn-border) !important;
+    }
+
+    .theme-message-item:hover {
+        background-color: var(--hover-color) !important;
+        color: var(--btn-text) !important;
+    }
+
+    .theme-message-content {
+        color: var(--text-color) !important;
+    }
+
+    .theme-message-time {
+        color: var(--search-placeholder) !important;
+    }
+
+    .theme-status-indicator {
+        background-color: var(--hover-color) !important;
+    }
+
+    /* Nav link theme colors */
+    .theme-nav-link {
+        color: var(--text-color) !important;
+    }
+
+    .theme-nav-link:hover {
+        color: var(--hover-color) !important;
+    }
+
+    /* For empty states */
+    .theme-empty-state {
+        color: var(--search-placeholder) !important;
+    }
+.note-style {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px !important;
+}
+
+/* new bar chart orders cxss  */
+/* Chart card hover effect: background changes, text stays white */

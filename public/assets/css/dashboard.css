@@ -1,0 +1,404 @@
+/* ============================================================
+   dashboard.css  —  Dashboard page styles (Horizon-inspired)
+   ============================================================ */
+
+/* ── Page wrapper ── */
+.db-page { padding: 24px; }
+
+/* ── Stat cards row ── */
+.db-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+@media(max-width:992px) { .db-stats { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:576px) { .db-stats { grid-template-columns: 1fr; } }
+
+.db-stat-card {
+    background: var(--sidebar-bg);
+    border: 1px solid var(--chart-grid);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color .2s, transform .2s;
+}
+.db-stat-card:hover { border-color: var(--hover-color); transform: translateY(-2px); text-decoration: none; color: inherit; }
+.db-stat-label {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: .6px; color: var(--text-color); opacity: .5;
+    font-family: 'Jost', sans-serif;
+}
+.db-stat-value {
+    font-size: 34px; font-weight: 700; line-height: 1.1;
+    color: var(--text-color); font-family: 'Jost', sans-serif;
+}
+.db-stat-change { font-size: 12px; font-family: 'Jost', sans-serif; margin-top: 2px; }
+.db-stat-change.up   { color: #22c55e; }
+.db-stat-change.down { color: #ef4444; }
+.db-stat-change.flat { color: var(--text-color); opacity: .45; }
+.db-stat-icon {
+    position: absolute; top: 16px; right: 16px;
+    font-size: 26px; color: var(--hover-color); opacity: .55;
+}
+
+/* ── Section header ── */
+.db-section-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+}
+.db-section-title {
+    font-size: 15px; font-weight: 700; color: var(--text-color);
+    font-family: 'Jost', sans-serif; margin: 0;
+}
+
+/* ── Generic card ── */
+.db-card {
+    background: var(--sidebar-bg);
+    border: 1px solid var(--chart-grid);
+    border-radius: 14px;
+    overflow: hidden;
+}
+.db-card-body { padding: 18px 20px; }
+
+/* ── Period select ── */
+.db-period-select {
+    background: var(--main-wrapper-bg);
+    border: 1px solid var(--chart-grid);
+    border-radius: 8px;
+    color: var(--text-color);
+    padding: 4px 10px;
+    font-size: 12px;
+    outline: none;
+    font-family: 'Jost', sans-serif;
+    cursor: pointer;
+    transition: border-color .2s;
+}
+.db-period-select:focus { border-color: var(--hover-color); }
+
+/* ── Mid row: chart + map ── */
+.db-mid-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+@media(max-width:992px) { .db-mid-row { grid-template-columns: 1fr; } }
+
+/* ── Map ── */
+#dashboardMap {
+    width: 100%;
+    height: 320px;
+}
+/* Leaflet popup — theme aware */
+.leaflet-popup-content-wrapper {
+    background: var(--sidebar-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--chart-grid) !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,.35) !important;
+    border-radius: 10px !important;
+    font-family: 'Jost', sans-serif !important;
+}
+.leaflet-popup-tip { background: var(--sidebar-bg) !important; }
+.leaflet-popup-close-button { color: var(--text-color) !important; }
+/* Marker divicons must overflow their container */
+.leaflet-marker-icon { overflow: visible !important; }
+
+/* ── Bottom: orders + side panels ── */
+.db-orders-row {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+@media(max-width:992px) { .db-orders-row { grid-template-columns: 1fr; } }
+
+/* ── Order tabs ── */
+.db-order-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.db-order-tab {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 5px 14px; border-radius: 20px;
+    border: 1px solid var(--chart-grid);
+    background: var(--sidebar-bg);
+    color: var(--text-color);
+    font-size: 12px; font-weight: 500;
+    cursor: pointer; transition: all .2s;
+    white-space: nowrap; font-family: 'Jost', sans-serif;
+}
+.db-order-tab:hover { border-color: var(--hover-color); }
+.db-order-tab.active {
+    background: var(--hover-color); border-color: var(--hover-color);
+    color: #111; font-weight: 700;
+}
+.db-order-tab .tab-count {
+    background: rgba(0,0,0,.15); color: inherit;
+    border-radius: 50%; width: 20px; height: 20px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700;
+}
+
+/* ── Orders table ── */
+.db-orders-scroll { overflow-y: auto; max-height: 340px; }
+.db-orders-table { width: 100%; border-collapse: collapse; font-size: 13px; font-family: 'Jost', sans-serif; }
+.db-orders-table th {
+    padding: 10px 12px; font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .6px;
+    color: var(--text-color); opacity: .45;
+    border-bottom: 1px solid var(--chart-grid);
+    white-space: nowrap; background: var(--main-wrapper-bg);
+    position: sticky; top: 0; z-index: 1;
+}
+.db-orders-table td {
+    padding: 11px 12px; color: var(--text-color);
+    border-bottom: 1px solid var(--chart-grid);
+    background: var(--main-wrapper-bg);
+}
+.db-orders-table tbody tr:last-child td { border-bottom: none; }
+.db-orders-table tbody tr {
+    cursor: pointer; transition: background .15s, box-shadow .15s;
+}
+.db-orders-table tbody tr:hover {
+    background: rgba(248,199,31,.06) !important;
+    box-shadow: inset 3px 0 0 var(--hover-color);
+}
+.db-orders-table tbody tr:hover td { background: transparent; }
+
+/* ── Status badges ── */
+.db-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 600; white-space: nowrap;
+    font-family: 'Jost', sans-serif;
+}
+.db-badge.pending    { background: rgba(248,199,31,.15); color: var(--hover-color); }
+.db-badge.active     { background: rgba(34,197,94,.14);  color: #22c55e; }
+.db-badge.complete   { background: rgba(99,102,241,.14); color: #818cf8; }
+.db-badge.cancel     { background: rgba(239,68,68,.12);  color: #ef4444; }
+.db-badge.assigned   { background: rgba(168,85,247,.14); color: #a855f7; }
+.db-badge.delivered  { background: rgba(99,102,241,.14); color: #818cf8; }
+.db-badge.in_transit { background: rgba(56,189,248,.14); color: #38bdf8; }
+.db-badge.picked_up  { background: rgba(20,184,166,.14); color: #14b8a6; }
+
+/* ── Mini cards (states / customers) ── */
+.db-mini-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 2px;
+}
+.db-mini-cards::-webkit-scrollbar { width: 4px; }
+.db-mini-cards::-webkit-scrollbar-track { background: transparent; }
+.db-mini-cards::-webkit-scrollbar-thumb { background: var(--chart-grid); border-radius: 4px; }
+.db-mini-cards::-webkit-scrollbar-thumb:hover { background: var(--hover-color); }
+.db-mini-card {
+    background: var(--main-wrapper-bg);
+    border: 1px solid var(--chart-grid);
+    border-radius: 12px;
+    padding: 12px 14px;
+    transition: border-color .2s, transform .15s;
+    cursor: default;
+}
+.db-mini-card:hover { border-color: var(--hover-color); transform: translateX(2px); }
+.db-mini-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.db-mini-card-avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: rgba(248,199,31,.12);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--hover-color);
+    font-family: 'Jost', sans-serif; flex-shrink: 0;
+}
+.db-mini-card-name {
+    font-size: 13px; font-weight: 600; color: var(--text-color);
+    font-family: 'Jost', sans-serif;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+}
+.db-mini-card-sub {
+    font-size: 10px; color: var(--text-color); opacity: .45;
+    font-family: 'Jost', sans-serif; margin-bottom: 8px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.db-mini-card-stats { display: flex; gap: 20px; }
+.db-mini-card-stat-val {
+    font-size: 18px; font-weight: 700; color: var(--hover-color);
+    font-family: 'Jost', sans-serif; line-height: 1;
+}
+.db-mini-card-stat-lbl {
+    font-size: 9px; text-transform: uppercase; color: var(--text-color);
+    opacity: .45; font-family: 'Jost', sans-serif;
+}
+
+/* ── Charts row ── */
+.db-charts-row {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 16px; margin-bottom: 16px;
+}
+@media(max-width:992px) { .db-charts-row { grid-template-columns: 1fr; } }
+
+.db-chart-wrap    { position: relative; height: 280px; }
+.db-chart-wrap-sm { position: relative; height: 280px; }
+
+/* ── Region rows ── */
+.db-region-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-family: 'Jost', sans-serif; }
+.db-region-flag { width: 22px; height: 15px; object-fit: cover; border-radius: 2px; flex-shrink: 0; }
+.db-region-name { font-size: 13px; color: var(--text-color); flex: 1; }
+.db-region-pct  { font-size: 13px; font-weight: 700; color: var(--hover-color); min-width: 38px; text-align: right; }
+.db-region-count { font-size: 11px; color: var(--text-color); opacity: .45; min-width: 28px; text-align: right; }
+.db-progress { height: 5px; border-radius: 3px; background: var(--chart-grid); overflow: hidden; margin-bottom: 10px; }
+.db-progress-bar { height: 100%; background: var(--hover-color); border-radius: 3px; transition: width .4s ease; }
+
+/* ── Two-col (maintenance) ── */
+.db-two-col {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-bottom: 16px;
+}
+@media(max-width:992px) { .db-two-col { grid-template-columns: 1fr; } }
+
+/* ── Maintenance table ── */
+.db-maint-table { width: 100%; border-collapse: collapse; font-family: 'Jost', sans-serif; font-size: 13px; }
+.db-maint-table th {
+    padding: 10px 14px; font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .6px;
+    color: var(--text-color); opacity: .45;
+    border-bottom: 1px solid var(--chart-grid);
+    white-space: nowrap;
+    background: var(--sidebar-bg);
+}
+.db-maint-table td {
+    padding: 11px 14px; color: var(--text-color);
+    border-bottom: 1px solid var(--chart-grid);
+    background: var(--sidebar-bg);
+    font-family: 'Jost', sans-serif;
+}
+.db-maint-table tbody tr:last-child td { border-bottom: none; }
+.db-maint-table tbody tr { transition: background .15s; }
+.db-maint-table tbody tr:hover td {
+    background: rgba(248,199,31,.06) !important;
+}
+.db-maint-table tbody tr:hover { box-shadow: inset 3px 0 0 var(--hover-color); }
+.db-maint-empty {
+    text-align: center; padding: 24px;
+    color: var(--text-color); opacity: .4;
+    font-family: 'Jost', sans-serif; font-size: 13px;
+}
+/* ── Maintenance card header — golden label style (matches old custom-card-header) ── */
+.db-two-col .db-card .db-card-body {
+    background: var(--main-wrapper-bg);
+    border-bottom: 2px solid var(--chart-grid);
+    padding: 12px 16px;
+}
+.db-two-col .db-card .db-section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--hover-color);
+    font-family: 'Jost', sans-serif;
+}
+.db-two-col .db-card .db-section-title i {
+    color: var(--hover-color) !important;
+}
+/* Cell borders like the old custom-table */
+.db-two-col .db-maint-table th,
+.db-two-col .db-maint-table td {
+    border: 1px solid var(--chart-grid);
+}
+.db-two-col .db-maint-table th {
+    background: var(--main-wrapper-bg);
+    opacity: 1;
+    color: var(--text-color);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    opacity: .55;
+}
+
+/* ── Activity chart legend ── */
+.db-chart-legend { display: flex; gap: 16px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
+.db-legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-color); font-family: 'Jost', sans-serif; opacity: .7; }
+.db-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── Loading skeleton ── */
+.db-skeleton { background: var(--chart-grid); border-radius: 10px; animation: db-pulse 1.2s infinite; height: 80px; }
+@keyframes db-pulse { 0%,100%{opacity:.3} 50%{opacity:.7} }
+
+/* ── Map legend ── */
+.db-map-legend {
+    position: absolute; bottom: 12px; left: 12px; z-index: 999;
+    background: var(--sidebar-bg);
+    border: 1px solid var(--chart-grid);
+    border-radius: 10px; padding: 8px 12px;
+    display: flex; flex-direction: column; gap: 5px;
+}
+.db-map-legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-color); font-family: 'Jost', sans-serif; }
+.db-map-legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── Sidebar overrides ── */
+#accordionSidebar .collapse-inner {
+    background: var(--sidebar-bg) !important;
+    border: 1px solid var(--chart-grid) !important;
+    border-radius: 10px !important;
+    margin: 4px 8px !important;
+    padding: 6px 0 !important;
+}
+#accordionSidebar .collapse-item {
+    color: var(--text-color) !important;
+    font-family: 'Jost', sans-serif !important;
+    font-size: 13px !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    transition: background .15s, color .15s !important;
+    display: flex !important;
+    align-items: center !important;
+}
+#accordionSidebar .collapse-item:hover {
+    background: rgba(248,199,31,.1) !important;
+    color: var(--hover-color) !important;
+}
+#accordionSidebar .collapse-item.active {
+    background: rgba(248,199,31,.15) !important;
+    color: var(--hover-color) !important;
+    font-weight: 600 !important;
+}
+#accordionSidebar .nav-link {
+    font-family: 'Jost', sans-serif !important;
+    font-size: 13px !important;
+    border-radius: 8px !important;
+    transition: background .15s, color .15s !important;
+}
+#accordionSidebar .nav-link:hover {
+    background: rgba(248,199,31,.08) !important;
+    color: var(--hover-color) !important;
+}
+#accordionSidebar .nav-link.active,
+#accordionSidebar .nav-link[style*="272A39"] {
+    background: rgba(248,199,31,.15) !important;
+    color: var(--hover-color) !important;
+    font-weight: 600 !important;
+}
+
+/* ── Navbar Quick Shipment button ── */
+.nav-btn-quick {
+    background: var(--hover-color);
+    color: #111;
+    font-weight: 700;
+    font-size: 12px;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    font-family: 'Jost', sans-serif;
+    transition: opacity .2s;
+    margin-right: 8px;
+}
+.nav-btn-quick:hover { opacity: .88; color: #111; text-decoration: none; }

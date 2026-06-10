@@ -1,0 +1,67 @@
+
+    /* Custom calendar input styles */
+    .custom-date-input {
+        position: relative;
+        width: 100%;
+    }
+
+    .custom-date-input input[type="date"] {
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    .custom-date-input .date-display {
+        padding: 8px 12px;
+        border-bottom: 1px solid #dee2e6;
+        border-radius: 4px;
+        background-color: var(--main-wrapper-bg);
+        color: var(--text-color);
+        cursor: pointer;
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .custom-date-input .date-display:hover {
+        border-color: #86b7fe;
+    }
+
+    .custom-date-input .calendar-icon {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        pointer-events: none;
+        /* Let the click go through to the input */
+    }
+
+    /* Hide the default calendar icon in WebKit browsers */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        cursor: pointer;
+    }
+
+    /* Firefox specific */
+    input[type="date"] {
+        -moz-appearance: textfield;
+    }
+
+    input[type="date"]::-moz-focus-inner {
+        border: 0;
+    }
+
+    /* For empty dates */
+    .custom-date-input .date-placeholder {
+        color: #6c757d;
+    }

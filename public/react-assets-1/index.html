@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+<link rel="icon" type="image/png" href="/dispatch/public/react-assets/assets/logo-GmhYhKM_.png" />
+    <script>
+      (function() {
+        try {
+          // Get saved theme or use system preference
+          const savedTheme = localStorage.getItem('theme');
+          const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          
+          let theme = 'light';
+          if (savedTheme) {
+            theme = savedTheme;
+          } else if (systemPrefersDark) {
+            theme = 'dark';
+          }
+          
+          // Apply theme IMMEDIATELY to html element
+          document.documentElement.setAttribute('data-theme', theme);
+          
+          // Force style calculation to prevent FOUC
+          document.documentElement.style.visibility = 'hidden';
+          document.documentElement.style.opacity = '0';
+          
+          // Once styles are loaded, show content
+          window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+              document.documentElement.style.visibility = 'visible';
+              document.documentElement.style.opacity = '1';
+              document.documentElement.style.transition = 'opacity 0.1s ease';
+            }, 50);
+          });
+        } catch (error) {
+          console.error('Theme initialization error:', error);
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cargo Dispatch</title>
+    <script type="module" crossorigin src="/dispatch/public/react-assets/assets/index-BWwkuXgV.js"></script>
+    <link rel="stylesheet" crossorigin href="/dispatch/public/react-assets/assets/index-BThHhyeM.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
